@@ -1,0 +1,7 @@
+node_modules/
+.DS_Store
+mySqlDB/
+demo/
+JenkinsWithK8s/minikConfig/
+JenkinsWithK8s/kubeconfig/
+JenkinsWithDockerCompose/

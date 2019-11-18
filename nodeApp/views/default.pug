@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Bolbeck Demo
+    link(rel='stylesheet', href='/css/bulma.min.css')
+    link(rel='stylesheet', href='/css/style.css')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+  body
+    main
+      block header
+        header.header
+          h3(class="title is-3 has-text-white" ) #{title}
+      block content

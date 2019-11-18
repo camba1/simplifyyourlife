@@ -1,0 +1,23 @@
+version: "3.7"
+
+services:
+  mysql2:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: mysql2
+    env_file: docker-compose.env
+    volumes:
+      - ./mySqlDB:/var/lib/mysql
+      - ./mySqlInit:/docker-entrypoint-initdb.d
+    ports:
+      - "3306:3306"
+  nodemysql:
+    build: ./nodeApp
+    depends_on:
+      - mysql2
+    container_name: nodemysqlcont
+    volumes:
+      - ./nodeApp:/code
+    ports:
+      - "3000:3000"

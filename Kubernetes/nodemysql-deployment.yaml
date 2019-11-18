@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose --file ./../docker-compose.yml convert
+    kompose.version: 1.19.0 ()
+  creationTimestamp: null
+  labels:
+    io.kompose.service: nodemysql
+  name: nodemysql
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nodemysql
+      io.kompose.service: nodemysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose --file ./../docker-compose.yml convert
+        kompose.version: 1.19.0 ()
+      creationTimestamp: null
+      labels:
+        app: nodemysql
+        io.kompose.service: nodemysql
+    spec:
+      containers:
+      - image: bolbeck/simplenodemysql
+        name: nodemysqlcont
+        ports:
+        - containerPort: 3000
+        resources: {}
+      restartPolicy: Always
+status: {}

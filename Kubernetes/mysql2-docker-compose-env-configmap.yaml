@@ -1,0 +1,9 @@
+apiVersion: v1
+data:
+  MYSQL_ROOT_PASSWORD: TestDB@home2
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  labels:
+    io.kompose.service: mysql2-docker-compose-env
+  name: mysql2-docker-compose-env

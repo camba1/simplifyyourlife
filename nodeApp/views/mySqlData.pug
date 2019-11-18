@@ -1,0 +1,24 @@
+extends default
+
+block content
+  h4(class="title is-4 has-text-centered") DB countries list:
+  div(class="columns is-centered")
+    div(class="column is-narrow")
+    table(class="table is-bordered")
+      tbody
+        tr
+          th Id
+          th Name
+        each country in countryList
+          tr
+            td #{country.id}
+            td #{country.name}
+  nav(class="level")
+    div(class="level-left")
+      p(class="level-item")
+        a( href="https://www.bolbeck.com")
+          img(src="image/BolbeckLogo and Name.png" width="120" height="56" alt="Bolbeck llc innovative solutions to unique problems" )
+    div(class="level-right")
+      p(class="level-item")
+        a( href="https://www.milwaukeecodecamp.com")
+          img(src="image/mkecc-logo-full-color.png" width="100" height="62" alt="Milwaukee Code Camp" )

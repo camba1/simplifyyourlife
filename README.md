@@ -5,9 +5,20 @@ Simple Nodejs server connecting to MySQL and with hooks to Docker Jenkins and Ku
 ## About this project
 This project was initially created as a demo. If you see something that could be improved either in the code or this document please feel free to open a pull request.
 
+## Pre-requisites
+In order to run the project in its entirety, you will need to have :
+
+- A git account (I used [Bitbucket](http://bitbucket.org))
+- A docker repository (I used [Docker hub](hub.docker.com))
+- [Docker](docker.com) installed in your machine ( I used Docker Desktop on my Mac)
+- [Minikube](https://minikube.sigs.k8s.io) installed in your machine
+
+Also, this document refers to the image in docker hub as _bolbeck/simplenodemysql_. You should change this to your own image name so that it can run under your own docker hub account (otherwise you will not be able to push the image out).
+
 ## The Application
 
 The app has two parts:
+
 - **MySQL database**: based on the official MySQL image. The DB is initialized to have a test DB and a Test table with some sample dummy data. The initialization is used with the script in the mySqlInit directory. This is run only once and only if the data volume (./mySqlDB) is empty
 
 
@@ -22,6 +33,7 @@ Note that the application sends back pre-rendered page back to the client and us
 #### Using the Dockerfile
 
 To bring up just the nodejs app:
+
 - Go to the ./nodeApp directory
 - Build the app: ``` docker build -t nodewithmysql_nodemysql . ```
 - Run the container: ``` docker run -p 3000:3000 --name nodemysqlcont nodewithmysql_nodemysql ```
@@ -50,6 +62,7 @@ npm install
 exit
 ```
 The above commands will:
+
 - Start the nodemysql service defined in our docker-compose file and log you  into the console in the container
 - In the container, run npm install, which creates the node_modules folder in the container. Since we have a volume mounted in our container to the nodeApp folder in our machine (as defined in our dockercompose file), the node_modules folder gets created in our host machine as well and is ready for use.
 - Exit the container and return to our host machine
@@ -61,8 +74,10 @@ Use ```docker-compose up``` in the same directory where you have the docker-comp
 
 ### Running the Tests
 
-- With the application running, login to the container with :
-`docker exec -it nodemysqlcont 'bash'`
+- With the application running, login to the container with:
+
+  `docker exec -it nodemysqlcont 'bash'`
+
 - Run `npm test`
 - To exit the container just use `exit`.
 
@@ -75,7 +90,9 @@ Also, use ```npm run test-exp``` to run some tests and export the results to a f
 During development, you may want ot restart the nodejs container. You can do this with:
 
  ```bash
+
  docker restart nodemysqlcont
+
  ```
 
 Alternatively you can install something like nodemon in your image to monitor for changes in the file system.
@@ -84,7 +101,7 @@ Alternatively you can install something like nodemon in your image to monitor fo
 
 Use ```docker-compose down``` in the same directory where you have the docker-compose file to bring the application down.
 
-## Tag and Push image manually
+## Tag and push image manually
 
 To push this the node image to dockerhub, we will first need to tag it properly, based in the dockerhub account id. we can also give it a proper tag so that we can keep a history.
 
@@ -149,15 +166,15 @@ In order to authenticate to minikube, we need to copy some certificates from our
 - In the _jenkinsWithK8s_ directory, create two directories **kubeconfig** and **minikConfig**
 - Copy the contents from your machine's **~/.kube** directory to the newly created **kubeconfig** directory (note that the path for the .kube directory given here is for a mac, it may be different in other OS)
 - Copy the following certificates from your machine's **~/.minikube** directory to the newly created **minikConfig** directory (note that the path for the .minikube directory given here is for a mac, it may be different in other OS):
-  - client.crt
-  - client.key
-  - ca.crt
+    - client.crt
+    - client.key
+    - ca.crt
 
 Once the certificates are in these directories, the image will pick them up automatically
 
 From within the _jenkinsWithK8s_ folder:
 
-```bash
+``` bash
   mkdir kubeconfig
   mkdir minikConfig
   cp -r ~/.kube/* kubeconfig/
@@ -170,11 +187,13 @@ From within the _jenkinsWithK8s_ folder:
 
  To run the Jenkins image:
 
- ```bash
+ ``` bash
+
  cd ./jenkinsWithK8s
  docker build -t jenk .
 
  docker run -u root --rm -d -p 8080:8080 -p 50000:50000 --name jenkcont -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenk
+
  ```
 
 #### Initializing Jenkins for first time run

@@ -87,13 +87,7 @@ Also, use ```npm run test-exp``` to run some tests and export the results to a f
 
 ### Restarting the nodejs container during development
 
-During development, you may want ot restart the nodejs container. You can do this with:
-
- ``` bash
-
- docker restart nodemysqlcont
-
- ```
+During development, you may want ot restart the nodejs container. You can do this with: ```docker restart nodemysqlcont```
 
 Alternatively you can install something like nodemon in your image to monitor for changes in the file system.
 
@@ -188,13 +182,11 @@ From within the _jenkinsWithK8s_ folder:
  To run the Jenkins image:
 
 ``` bash
-
  cd ./jenkinsWithK8s
  docker build -t jenk .
 
  docker run -u root --rm -d -p 8080:8080 -p 50000:50000 --name jenkcont -v jenkins-data:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenk
-
- ```
+```
 
 #### Initializing Jenkins for first time run
 

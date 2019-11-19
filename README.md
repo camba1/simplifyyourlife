@@ -23,8 +23,8 @@ The app has two parts:
 
 
 - **Nodejs**: app which is built from the ```Dockerfile``` in the nodeApp directory. The app has two entry points:
-  - **Root** ("/") just pulls writes hello world and the hostname
-  - **/mysql** pull data from the test DB in MYSql and posts the JSON on the browser
+    - **Root** ("/") just pulls writes hello world and the hostname
+    - **/mysql** pull data from the test DB in MYSql and posts the JSON on the browser
 
 Note that the application sends back pre-rendered page back to the client and uses _pug_ as the rendering engine.
 
@@ -89,7 +89,7 @@ Also, use ```npm run test-exp``` to run some tests and export the results to a f
 
 During development, you may want ot restart the nodejs container. You can do this with:
 
- ```bash
+ ``` bash
 
  docker restart nodemysqlcont
 
@@ -105,7 +105,7 @@ Use ```docker-compose down``` in the same directory where you have the docker-co
 
 To push this the node image to dockerhub, we will first need to tag it properly, based in the dockerhub account id. we can also give it a proper tag so that we can keep a history.
 
-- login to dockerhub, tag image and push to docker hub example:
+- login to dockerhub, tag image and push to docker hub:
 
 ```bash
 docker login --username <dockerUserId>
@@ -113,7 +113,7 @@ docker tag nodewithmysql_nodemysql bolbeck/simplenodemysql
 docker push bolbeck/simplenodemysql:latest
 ```
 
-Note that you will need to change the name of the image to match your own docker hub account
+**Note** that you will need to change the name of the image to match your own docker hub account
 
 ### Pushing to Minikube
 
@@ -121,13 +121,13 @@ Note that you will need to change the name of the image to match your own docker
 
 Create the K8s manifests using Kompose. Note, we create a new directory for neatness, but this is not necessary strictly speaking
 
+Kompose out of the box may not create exactly what you need, but gets you 80% - 90% there. The final modified files are in the Kubernetes folder already, but you could recreate the original output from Kompose using:
+
 ``` bash
-mkdir Kubernetes
-cd Kubernetes
+mkdir KubernetesOrig
+cd KubernetesOrig
 kompose --file docker-compose.yml convert
 ```
-
-Kompose out of the box may not create exactly what you need, but gets you 90% there. The final modified files are in the Kubernetes folder.
 
 #### Push to Minikube
 
@@ -187,7 +187,7 @@ From within the _jenkinsWithK8s_ folder:
 
  To run the Jenkins image:
 
- ``` bash
+``` bash
 
  cd ./jenkinsWithK8s
  docker build -t jenk .

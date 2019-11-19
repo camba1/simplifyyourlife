@@ -1,6 +1,6 @@
 # Node with MySQL
 
-Simple Nodejs server connecting to MySQL and with hooks to Docker Jenkins and Kubernetes.
+Simple Nodejs server connecting to MySQL and with hooks to Docker Jenkins and Kubernetes running in Minikube.
 
 ## About this project
 This project was initially created as a demo. If you see something that could be improved either in the code or this document please feel free to open a pull request.

@@ -1,7 +1,7 @@
 # Simplify your life with Docker, Jenkins and Minikube
-## DevOps World 2002
+## DevOps World 2020
 
-Simple Nodejs application connecting to MySQL and with hooks to Docker Jenkins and Kubernetes running in Minikube.
+Simple Nodejs application connecting to MySQL and with hooks to Docker Jenkins and Kubernetes running in Minikube. This application is part of the 'Simplify your life with Docker, Jenkins and Minikube' presentation at DevOps World 2020.
 
 ### About this project
 This project was initially created for a demo. If you see something that could be improved either in the code or this document please feel free to open a pull request.

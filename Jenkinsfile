@@ -11,7 +11,7 @@ node {
       dir('nodeApp') {
 
         /* Build the docker image */
-        app = docker.build("bolbeck/simplenodemysql")
+        app = docker.build("bolbeck/dow2020simplelife")
       }
     }
 
@@ -34,7 +34,7 @@ node {
 
 
     stage('Push image') {
-      
+
         /* Push images: First is tagged with the build BUILD_NUMBER
          the second is just tagged latest !*/
         docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials') {

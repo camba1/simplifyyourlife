@@ -17,6 +17,7 @@ services:
     depends_on:
       - mysql2
     container_name: nodemysqlcont
+    env_file: docker-compose-node.env
     volumes:
       - ./nodeApp:/code
     ports:

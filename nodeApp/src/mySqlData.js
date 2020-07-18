@@ -4,11 +4,11 @@ const mysql = require('mysql2/promise');
 //DEMO code....do not do this at home folks!
 var pool = mysql.createPool({
     connectionLimit : 5,
-    host: 'mysql2',
-    port: '3306',
-    user: 'root',
-    password: 'TestDB@home2',
-    database: 'test'
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PWD,
+    database: process.env.DB_NAME
 });
 
 /**
@@ -17,7 +17,7 @@ var pool = mysql.createPool({
 const getMySqlData =  (request, response) => {
   getMySqlDataProm(request, response).then(result=>{
     response.render('mySqlData', {
-      title: 'World Data!' ,
+      title: 'World Data2!' ,
       countryList: result
     })
   });

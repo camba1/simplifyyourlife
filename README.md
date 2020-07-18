@@ -39,7 +39,7 @@ To bring up just the nodejs app:
 
 - Go to the ./nodeApp directory
 - Build the app: ``` docker build -t nodewithmysql_nodemysql . ```
-- Run the container: ``` docker run -p 3000:3000 --name nodemysqlcont nodewithmysql_nodemysql ```
+- Run the container: ``` docker run -p 3000:3000 --env-file ./docker-node.env --name nodemysqlcont nodewithmysql_nodemysql ```
 - Open ``` localhost:3000 ``` in your browser
 
 Note that this will bring up only the nodejs application and not the DB, so the app will fail if you try to access the second page (```localhost:3000/mysql```)

@@ -7,7 +7,7 @@ var hostname = os.hostname();
 const sayHello = (request, response) => {
   let helloWorldMsg = buildHello(hostname);
   response.render('helloworld', {
-    title: 'Welcome Campers' ,
+    title: 'Welcome to DevOps World 2020' ,
     message: helloWorldMsg
   })
 }

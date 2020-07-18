@@ -17,7 +17,7 @@ var pool = mysql.createPool({
 const getMySqlData =  (request, response) => {
   getMySqlDataProm(request, response).then(result=>{
     response.render('mySqlData', {
-      title: 'Camp Data!' ,
+      title: 'World Data!' ,
       countryList: result
     })
   });

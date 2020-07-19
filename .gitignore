@@ -5,3 +5,5 @@ demo/
 JenkinsWithK8s/minikConfig/
 JenkinsWithK8s/kubeconfig/
 JenkinsWithDockerCompose/
+JenkinsWithK8s/minikConfigOld/
+JenkinsWithK8s/kubeconfigold/

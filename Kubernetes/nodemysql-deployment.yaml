@@ -27,7 +27,33 @@ spec:
         io.kompose.service: nodemysql
     spec:
       containers:
-      - image: bolbeck/dow2020simplelife
+      - env:
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              key: DB_HOST
+              name: docker-compose-node-env
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              key: DB_NAME
+              name: docker-compose-node-env
+        - name: DB_PORT
+          valueFrom:
+            configMapKeyRef:
+              key: DB_PORT
+              name: docker-compose-node-env
+        - name: DB_PWD
+          valueFrom:
+            configMapKeyRef:
+              key: DB_PWD
+              name: docker-compose-node-env
+        - name: DB_USER
+          valueFrom:
+            configMapKeyRef:
+              key: DB_USER
+              name: docker-compose-node-env
+        image: bolbeck/dow2020simplelife
         name: nodemysqlcont
         ports:
         - containerPort: 3000

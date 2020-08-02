@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: nodemysql
   name: nodemysql
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: nodemysql

@@ -16,7 +16,7 @@ In order to run the project in its entirety, you will need to have :
 - [Docker](docker.com) installed in your machine ( I used Docker Desktop on my Mac)
 - [Minikube](https://minikube.sigs.k8s.io) installed in your machine
 
-Also, this document refers to the image in docker hub as _bolbeck/simplenodemysql_. You should change this to your own image name so that it can run under your own docker hub account (otherwise you will not be able to push the image out).
+Also, this document refers to the image in docker hub as _bolbeck/dow2020simplelife_. You should change this to your own image name so that it can run under your own docker hub account (otherwise you will not be able to push the image out).
 
 ### The Application
 
@@ -106,8 +106,8 @@ To push this the node image to dockerhub, we will first need to tag it properly,
 
 ```bash
 docker login --username <dockerUserId>
-docker tag nodewithmysql_nodemysql bolbeck/simplenodemysql
-docker push bolbeck/simplenodemysql:latest
+docker tag nodewithmysql_nodemysql <dockerUserId>/simplenodemysql
+docker push <dockerUserId>/simplenodemysql:latest
 ```
 
 **Note** that you will need to change the name of the image to match your own docker hub account
